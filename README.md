@@ -1,2 +1,2 @@
 # tcc_denoiser
-TCC DENOISER RNN
+TCC DENOISER utilizando LSTM
