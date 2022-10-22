@@ -213,6 +213,7 @@ def Get_Noise():
     try:
       signal, FS = librosa.load(path = "{}{}".format(new_string, nome_ruidos[i]),sr = None, mono = True)
       a = resample(signal , FS, 8000)
+      print('Arquivo numero: ',i)
       dataset_noise.append(a)
     except:
       #print("Audio Corrompido {}: {}".format(n, nome_ruidos[i]))
