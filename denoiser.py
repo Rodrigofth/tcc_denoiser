@@ -175,6 +175,7 @@ def gera_ruido(amplitude, tamanho):
   return amplitude * np.random.randn(1,tamanho)
 
 #-------------------------------------------------------------------------------
+#Le Arquvios dos Audios Limpos
 def Get_Audio():
   #baixa_arq('audios')
   nome_audios = []
@@ -198,6 +199,7 @@ def Get_Audio():
   return dataset_voice
 
 #-------------------------------------------------------------------------------
+#Le Arquivos de Ruidos
 def Get_Noise():
   #baixa_arq('ruidos')
   nome_ruidos = []
@@ -220,7 +222,7 @@ def Get_Noise():
   return dataset_noise
 
 #-------------------------------------------------------------------------------
-
+#Mascara Ideal Binaria
 def Mask_Ideal_Bin(specV, specN, snr):
   FC = snr + 5
   a = []
