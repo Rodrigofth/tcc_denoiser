@@ -27,24 +27,6 @@ import IPython.display
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from PIL import Image
-#-------------------------------------------------------------------------------
-#BAIXA OS ARQ. DE AUDIO(VOICE), RUIDOS(URBANSOUND8K) E DESCOMPACTA
-def baixa_arq(nome_do_arq):
-    if nome_do_arq == "audios":
-      target_url = 'https://drive.google.com/uc?id=1TgrkFdERLtivmP6QA3SdDKobBeIky871'#https://drive.google.com/file/d/1TgrkFdERLtivmP6QA3SdDKobBeIky871/view?usp=sharing
-      gdown.download(target_url) 
-      !unzip DataSet_Audio.zip
-    if nome_do_arq == "ruidos":
-      target_url = 'https://drive.google.com/uc?id=1ICta-FLytBIh-PQS0_OOKCTQAwPII3YU'#https://drive.google.com/file/d/1ICta-FLytBIh-PQS0_OOKCTQAwPII3YU/view?usp=sharing
-      gdown.download(target_url)
-      !unzip DataSet_Ruido.zip
-    if nome_do_arq == 'kitchen':
-      target_url = 'https://drive.google.com/uc?id=1qkDOrD5dZ8J5gbJ-uKgPsstkVud0NpIg'#
-      gdown.download(target_url,"DKITCHEN-noiser.zip",quiet=False)
-      !unzip DKITCHEN-noiser.zip
-
-
-
 
 #-------------------------------------------------------------------------------
 #PLAY AUDIO
