@@ -241,10 +241,12 @@ def Mask_Ideal_Bin(specV, specN, snr):
 
 def Get_Features():
 #Baxa os arquivos e downsample audios
-  print("Audios")
-  Voice = Get_Audio()
   print("Ruidos")
   Noise = Get_Noise()
+
+  print("Audios")
+  Voice = Get_Audio()
+
 #Mixa audios limpos com os segmentos equivalentes dos ruidos
   i = 0
   Mix = []
