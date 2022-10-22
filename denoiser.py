@@ -248,6 +248,7 @@ def Get_Features():
   NoiseSegment = []
   for i in range(4300):
     v_mix, ruidoSegment = mix_sound(Voice[i], Noise[i])
+    print("Mixando Audio com Ruido: ", i)
     Mix.append(v_mix)
     NoiseSegment.append(ruidoSegment)
 #Calcula o espectograma dos audio, ruido e do mix
@@ -255,18 +256,21 @@ def Get_Features():
   specVoice = []
   for i in range(4300):
     v = spec_signal(Voice[i])
+    print("Espectograma Voice: ",i)
     specVoice.append(v)
   
   i = 0
   specNoise = []
   for i in range(4300):
     r = spec_signal(NoiseSegment[i])
+    print("Espectograma Noise: ",i)
     specNoise.append(r)
 
   i = 0
   specMix = []
   for i in range(4300):
     m = spec_signal(Mix[i])
+    print("Espectograma Mixado: ",i)
     specMix.append(m)
 
 #SNR do Mix
@@ -274,12 +278,14 @@ def Get_Features():
   SNR_Mix = []
   for i in range(4300):
     RSR = snr_sinal(Voice[i], NoiseSegment[i])
+    print("SNR Voice/Noise: ",i)
     SNR_Mix.append(RSR)
 
 #Mascara Binaria Ideal
 
   for i in range(4300):
     specMask = Mask_Ideal_Bin(specVoice[i], specNoise[i], SNR_Mix[i])
+    print("Mask ideal: ",i)
   
 
   return Voice, NoiseSegment, specVoice, specNoise, specMix, SNR_Mix, specMask
