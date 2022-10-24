@@ -303,6 +303,6 @@ def Get_Features():
 print("Audios")
 
 data = np.load('Voices8k.npz')
-print data[0]
+print (data[0])
 
 print('FIM')
