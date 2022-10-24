@@ -298,16 +298,85 @@ def Get_Features():
 
 
 
-#v, n, spV, spN, spM, snr, spMask = Get_Features()
+n, spV, spN, spM, snr, spMask = Get_Features()
 
 print("Audios")
-
-v = Get_Audio()
-VoicesTrain = v[0:3654]
+VoicesTrain = v[:3654]
 VoicesTest = v[3655:]
-np.savez("Voices8k.npz", *v)
+np.savez("Voice8k.npz", *v)
 print("1")
-np.savez("VoicesTrain.npz", *VoicesTrain)
+np.savez("VoiceTrain.npz", *VoicesTrain)
 print("2")
-np.savez("VoicesTest.npz", *VoicesTest)
+np.savez("VoiceTest.npz", *VoicesTest)
+
+print("Ruido")
+NoiseTrain = n[:3654]
+NoiseTest = n[3655:]
+np.savez("Noises8k.npz", *n)
+print("1")
+np.savez("NoiseTrain.npz", *NoiseTrain)
+print("2")
+np.savez("NoiseTest.npz", *NoiseTest)
 print('FIM')
+
+print("Espectograma Voices")
+SpecVoiceTrain = spV[:3654]
+SpecVoiceTest = spV[3655:]
+np.savez("SpecVoice.npz", *spV)
+print("1")
+np.savez("SpecVoiceTrain.npz", *SpecVoiceTrain)
+print("2")
+np.savez("SpecVoiceTest.npz", *SpecVoiceTest)
+print('FIM')
+
+print("Espectograma Noises")
+SpecNoiseTrain = spN[:3654]
+SpecNoiseTest = spN[3655:]
+np.savez("SpecNoise.npz", *spN)
+print("1")
+np.savez("SpecNoiseTrain.npz", *SpecNoiseTrain)
+print("2")
+np.savez("SpecNoiseTest.npz", *SpecNoiseTest)
+print('FIM')
+
+print("Espectograma Mix")
+SpecMixTrain = spM[:3654]
+SpecMIxTest = spM[3655:]
+np.savez("SpecMix.npz", *spM)
+print("1")
+np.savez("SpecMixTrain.npz", *SpecNoiseTrain)
+print("2")
+np.savez("SpecMIxTest.npz", *SpecNoiseTest)
+print('FIM')
+
+
+print("SNR")
+SNRTrain = spM[:3654]
+SNRTest = spM[3655:]
+np.savez("SpecSNR.npz", *snr)
+print("1")
+np.savez("SNRTrain.npz", *SNRTrain)
+print("2")
+np.savez("SNRTest.npz", *SNRTest)
+print('FIM')
+
+print("SNR")
+SNRTrain = spM[:3654]
+SNRTest = spM[3655:]
+np.savez("SpecNoise.npz", *snr)
+print("1")
+np.savez("SNRTrain.npz", *SNRTrain)
+print("2")
+np.savez("SNRTest.npz", *SNRTest)
+print('FIM')
+
+print("Espectograma Mascara Ideal")
+MaskTrain = spMask[:3654]
+MaskTest = spMask[3655:]
+np.savez("MaskIdeal.npz", *spMask)
+print("1")
+np.savez("MaskTrain.npz", *MaskTrain)
+print("2")
+np.savez("MaskTest.npz", *MaskTest)
+print('FIM')
+
