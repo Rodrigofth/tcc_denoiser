@@ -301,12 +301,8 @@ def Get_Features():
 #v, n, spV, spN, spM, snr, spMask = Get_Features()
 
 print("Audios")
-v = Get_Audio()
-VoicesTrain = v[0:3654]
-VoicesTest = v[3655:]
-np.savez = ("Voices8k", *v)
-print("1")
-np.savez = ("VoicesTrain", *VoicesTrain)
-print("2")
-np.savez = ("VoicesTest", *VoicesTest)
+
+v1 = np.load("Voices8k")
+vi["arr_0"]
+
 print('FIM')
