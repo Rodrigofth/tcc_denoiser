@@ -302,7 +302,12 @@ def Get_Features():
 
 print("Audios")
 
-data = np.load('Voices8k.npz')
-print (data[0])
-
+v = Get_Audio()
+VoicesTrain = v[0:3654]
+VoicesTest = v[3655:]
+np.savez("Voices8k.npz", *v)
+print("1")
+np.savez("VoicesTrain.npz", *VoicesTrain)
+print("2")
+np.savez("VoicesTest.npz", *VoicesTest)
 print('FIM')
