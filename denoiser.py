@@ -302,7 +302,7 @@ def Get_Features():
 
 print("Audios")
 
-
+v = Get_Audio()
 VoicesTrain = v[0:3654]
 VoicesTest = v[3655:]
 np.savez = ("Voices8k.npz", *v)
