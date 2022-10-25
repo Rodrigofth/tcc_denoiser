@@ -268,7 +268,7 @@ v, n = Get_Features()
 print("Audios")
 VoicesTrain = v[:3654]
 VoicesTest = v[3655:]
-np.savez("Voice8k.npz", *v)
+np.savez("Voice8k.npz", *v[0:4299])
 print("1")
 np.savez("VoiceTrain.npz", *VoicesTrain)
 print("2")
@@ -283,8 +283,5 @@ np.savez("NoiseTrain.npz", *NoiseTrain)
 print("2")
 np.savez("NoiseTest.npz", *NoiseTest)
 print('FIM')
-np.savez("MaskTrain.npz", *MaskTrain)
-print("2")
-np.savez("MaskTest.npz", *MaskTest)
-print('FIM')
+
 
