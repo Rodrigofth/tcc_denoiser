@@ -258,47 +258,12 @@ def Get_Features():
     Mix.append(v_mix)
     NoiseSegment.append(ruidoSegment)
 #Calcula o espectograma dos audio, ruido e do mix
-  i = 0
-  specVoice = []
-  for i in range(4300):
-    v = spec_signal(Voice[i])
-    print("Espectograma Voice: ",i)
-    specVoice.append(v)
-  
-  i = 0
-  specNoise = []
-  for i in range(4300):
-    r = spec_signal(NoiseSegment[i])
-    print("Espectograma Noise: ",i)
-    specNoise.append(r)
-
-  i = 0
-  specMix = []
-  for i in range(4300):
-    m = spec_signal(Mix[i])
-    print("Espectograma Mixado: ",i)
-    specMix.append(m)
-
-#SNR do Mix
-  i = 0
-  SNR_Mix = []
-  for i in range(4300):
-    RSR = snr_sinal(Voice[i], NoiseSegment[i])
-    print("SNR Voice/Noise: ",i)
-    SNR_Mix.append(RSR)
-
-#Mascara Binaria Ideal
-
-  for i in range(4300):
-    specMask = Mask_Ideal_Bin(specVoice[i], specNoise[i], SNR_Mix[i])
-    print("Mask ideal: ",i)
-  
-
-  return Voice, NoiseSegment, specVoice, specNoise, specMix, SNR_Mix, specMask
 
 
+  return Voice, NoiseSegment
 
-v, n, spV, spN, spM, snr, spMask = Get_Features()
+
+v, n = Get_Features()
 
 print("Audios")
 VoicesTrain = v[:3654]
@@ -318,63 +283,6 @@ np.savez("NoiseTrain.npz", *NoiseTrain)
 print("2")
 np.savez("NoiseTest.npz", *NoiseTest)
 print('FIM')
-
-print("Espectograma Voices")
-SpecVoiceTrain = spV[:3654]
-SpecVoiceTest = spV[3655:]
-np.savez("SpecVoice.npz", *spV)
-print("1")
-np.savez("SpecVoiceTrain.npz", *SpecVoiceTrain)
-print("2")
-np.savez("SpecVoiceTest.npz", *SpecVoiceTest)
-print('FIM')
-
-print("Espectograma Noises")
-SpecNoiseTrain = spN[:3654]
-SpecNoiseTest = spN[3655:]
-np.savez("SpecNoise.npz", *spN)
-print("1")
-np.savez("SpecNoiseTrain.npz", *SpecNoiseTrain)
-print("2")
-np.savez("SpecNoiseTest.npz", *SpecNoiseTest)
-print('FIM')
-
-print("Espectograma Mix")
-SpecMixTrain = spM[:3654]
-SpecMIxTest = spM[3655:]
-np.savez("SpecMix.npz", *spM)
-print("1")
-np.savez("SpecMixTrain.npz", *SpecNoiseTrain)
-print("2")
-np.savez("SpecMIxTest.npz", *SpecNoiseTest)
-print('FIM')
-
-
-print("SNR")
-SNRTrain = spM[:3654]
-SNRTest = spM[3655:]
-np.savez("SpecSNR.npz", *snr)
-print("1")
-np.savez("SNRTrain.npz", *SNRTrain)
-print("2")
-np.savez("SNRTest.npz", *SNRTest)
-print('FIM')
-
-print("SNR")
-SNRTrain = spM[:3654]
-SNRTest = spM[3655:]
-np.savez("SpecNoise.npz", *snr)
-print("1")
-np.savez("SNRTrain.npz", *SNRTrain)
-print("2")
-np.savez("SNRTest.npz", *SNRTest)
-print('FIM')
-
-print("Espectograma Mascara Ideal")
-MaskTrain = spMask[:3654]
-MaskTest = spMask[3655:]
-np.savez("MaskIdeal.npz", *spMask)
-print("1")
 np.savez("MaskTrain.npz", *MaskTrain)
 print("2")
 np.savez("MaskTest.npz", *MaskTest)
