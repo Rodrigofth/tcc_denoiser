@@ -179,9 +179,9 @@ def gera_ruido(amplitude, tamanho):
 def Get_Audio():
   #baixa_arq('audios')
   nome_audios = []
-  nome_audios = os.listdir("C:/Users/digof/Desktop/TCC/Dataset/DataSet_Audio")
+  nome_audios = os.listdir("/home/rodrigo.fleith/downloads/DataSet_Audio")
   dataset_voice = []
-  new_string = "C:/Users/digof/Desktop/TCC/Dataset/DataSet_Audio/"
+  new_string = "/home/rodrigo.fleith/downloads/DataSet_Audio/"
   n = 1
   for i in range(len(nome_audios)):
     try:
@@ -203,9 +203,9 @@ def Get_Audio():
 def Get_Noise():
   #baixa_arq('ruidos')
   nome_ruidos = []
-  nome_ruidos = os.listdir("C:/Users/digof/Desktop/TCC/Dataset/DataSet_Ruido")
+  nome_ruidos = os.listdir("/home/rodrigo.fleith/downloads/DataSet_Ruido")
   dataset_noise = []
-  new_string = "C:/Users/digof/Desktop/TCC/Dataset/DataSet_Ruido/"
+  new_string = "/home/rodrigo.fleith/downloads/DataSet_Ruido/"
 
   n = 1
 
