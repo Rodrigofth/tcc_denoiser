@@ -94,7 +94,7 @@ def Mask_Ideal_Bin(specV, specN, snr):
   for j in range(129):
     i = 0
     for i in range(len(specV[0])):
-       if specN == 0:
+      if specN == 0:
         RSR = 0
         print('Divisao por Zero')
       
