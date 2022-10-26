@@ -119,6 +119,7 @@ def Get_Features():
               
   print("Audios")
   target_url = 'https://drive.google.com/uc?id=1oI9TGTgt3IpI9P4auDmNCBMLKClG8sHZ'#https://drive.google.com/file/d/1oI9TGTgt3IpI9P4auDmNCBMLKClG8sHZ/view?usp=sharing
+  gdown.download(target_url)
   Voice = np.load("Voice8k.npz",mmap_mode = 'r')
   Voice = [Voice[k] for k in Voice]
 
