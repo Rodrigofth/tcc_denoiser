@@ -27,7 +27,6 @@ import pandas as pd
 import librosa.display
 import IPython.display
 import matplotlib.pyplot as plt
-import plotly.graph_objects as go
 from PIL import Image
 
 
