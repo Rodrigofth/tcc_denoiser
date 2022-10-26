@@ -112,17 +112,24 @@ def Get_Features():
     
 
   print("Ruidos")
+  target_url = 'https://drive.google.com/uc?id=1JW2HncltSnw2i0PsEnCt83KezvqpS5uS'#https://drive.google.com/file/d/1JW2HncltSnw2i0PsEnCt83KezvqpS5uS/view?usp=sharing
+  gdown.download(target_url)
   Noise = np.load("Noises8k.npz",mmap_mode = 'r')
   Noise = [Noise[k] for k in Noise]
+              
   print("Audios")
+  target_url = 'https://drive.google.com/uc?id=1oI9TGTgt3IpI9P4auDmNCBMLKClG8sHZ'#https://drive.google.com/file/d/1oI9TGTgt3IpI9P4auDmNCBMLKClG8sHZ/view?usp=sharing
   Voice = np.load("Voice8k.npz",mmap_mode = 'r')
   Voice = [Voice[k] for k in Voice]
 
 #Mixa audios limpos com os segmentos equivalentes dos ruidos
-
-  print('Audio Mixado')
-  Mix = np.load('VoiceMix.npz',mmap_mode = 'r')
-  Mix = [Mix[k] for k in Mix]
+  Mix = []
+  NoiseSegment = []
+  for i in range(4300):
+    v_mix, ruidoSegment = mix_sound(Voice[i], Noise[i])
+    print("Mixando Audio com Ruido: ", i)
+    Mix.append(v_mix)
+    NoiseSegment.append(ruidoSegment)
 #Calcula o espectograma dos audio, ruido e do mix
   specVoice = []
   for i in range(4300):
