@@ -94,6 +94,10 @@ def Mask_Ideal_Bin(specV, specN, snr):
   for j in range(129):
     i = 0
     for i in range(len(specV[0])):
+       if specN == 0:
+        RSR = 0
+        print('Divisao por Zero)
+      
       RSR =  20*np.log10(specV[j,i] / specN[j, i])  
       if RSR >= FC:
         Mask[j][i] = 1
@@ -105,6 +109,7 @@ def Mask_Ideal_Bin(specV, specN, snr):
 
 
 def Get_Features():
+    
 
   print("Ruidos")
   Noise = np.load("Noises8k.npz",mmap_mode = 'r')
@@ -115,13 +120,9 @@ def Get_Features():
 
 #Mixa audios limpos com os segmentos equivalentes dos ruidos
 
-  Mix = []
-  NoiseSegment = []
-  for i in range(4300):
-    v_mix, ruidoSegment = mix_sound(Voice[i], Noise[i])
-    print("Mixando Audio com Ruido: ", i)
-    Mix.append(v_mix)
-    NoiseSegment.append(ruidoSegment)
+  print('Audio Mixado')
+  Mix = np.load('VoiceMix.npz',mmap_mode = 'r')
+  Mix = [Mix[k] for k in Mix]
 #Calcula o espectograma dos audio, ruido e do mix
   specVoice = []
   for i in range(4300):
@@ -152,7 +153,7 @@ def Get_Features():
   specMask = []
   for i in range(4300):
     Mask = Mask_Ideal_Bin(specVoice[i], specNoise[i], SNR[i])
-    specMask.append(mask_indices)
+    specMask.append(Mask)
     print("Mask ideal: ",i)
 
   return Mix,specVoice, specNoise, specMix, SNR, specMask
@@ -160,8 +161,8 @@ def Get_Features():
 
 vM, spcV, spcN, spcM, snr, IBM = Get_Features()
 
-print("Mix")
-np.savez("VoiceMix.npz", *vM)
+print('Relação sinal ruido')
+np.savez('SNR.npz', *snr)
 print("FIM")
 
 print('specVoice')
@@ -173,11 +174,7 @@ np.savez('EspecNoise',*spcN)
 print("FIM")
 
 print('specMix')
-np.savez('EpecMix',*spcM)
-print("FIM")
-
-print('Relação sinal ruido')
-np.savez('SNR.npz', *snr)
+np.savez('EspecMix',*spcM)
 print("FIM")
 
 print('Mascara Binaria Ideal')
