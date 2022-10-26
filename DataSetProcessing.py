@@ -93,11 +93,7 @@ def Mask_Ideal_Bin(specV, specN, snr):
   Mask = a
   for j in range(129):
     i = 0
-    for i in range(len(specV[0])):
-      if specN == 0:
-        RSR = 0
-        print('Divisao por Zero')
-      
+    for i in range(len(specV[0])):      
       RSR =  20*np.log10(specV[j,i] / specN[j, i])  
       if RSR >= FC:
         Mask[j][i] = 1
