@@ -38,3 +38,27 @@ indices = np.arange(4300)
     indices_train,
     indices_test,
 ) = train_test_split(data, labels, indices, test_size=0.2, random_state=10)
+
+print('data_train')
+np.savez('data_train.npz', *data_train)
+print("FIM")
+
+print('data_test')
+np.savez('data_test.npz', *data_test)
+print("FIM")
+
+print('labels_test')
+np.savez('labels_test.npz', *labels_test)
+print("FIM")
+
+print('labels_train')
+np.savez('labels_train.npz', *labels_train)
+print("FIM")
+
+print('indices_train')
+np.savez('indices_train.npz', *indices_train)
+print("FIM")
+
+print('indices_test')
+np.savez('indices_test.npz', *indices_test)
+print("FIM")
