@@ -12,6 +12,7 @@ from time import sleep
 import librosa
 import numpy as np
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
 print("Mascara Ideal")
 MaskIdeal = np.load("MaskIdeal.npz",mmap_mode = 'r')
