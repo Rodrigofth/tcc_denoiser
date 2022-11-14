@@ -101,7 +101,7 @@ labels_train_2dT = np.array(labels_train_2d).reshape(len(labels_train_2d),1,129)
 labels_test_2dT = np.array(labels_test_2d).reshape(len(labels_test_2d),1,129)
 
 def seq2one(vocab, input_shape):
-    lr_schedule = schedules.ExponentialDecay(initial_learning_rate=1e-3, decay_steps=60000, decay_rate=0.9, staircase=True)
+    lr_schedule = schedules.ExponentialDecay(initial_learning_rate=1e-3, decay_steps=50000, decay_rate=0.95, staircase=True)
 
     opt = Adam(learning_rate=0.0001)
     opt2 = RMSprop(learning_rate = lr_schedule,momentum=0.6)
@@ -120,7 +120,7 @@ def seq2one(vocab, input_shape):
     
 def train_model(train_inputs, test_inputs, train_labels, test_labels):
   
-  epochs = 50
+  epochs = 100
   batch_size = 64
 
   vocab = 129
@@ -130,4 +130,6 @@ def train_model(train_inputs, test_inputs, train_labels, test_labels):
 
   return model
 
-model = train_model(data_train_2dT_norm,data_test_2dT_norm,labels_train_2d,labels_test_2d)
+model = train_model(data_train_2dT,data_test_2dT,labels_train_2d,labels_test_2d)
+
+model.save('saved_model/Lstm_100epochs')
