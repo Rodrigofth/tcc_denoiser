@@ -67,17 +67,12 @@ def m_2d(dataset_1d):
   return data_list_2d
 
 
-#Baixando dataset/labels
-wget "https://brpucrs-my.sharepoint.com/:u:/g/personal/rodrigo_fleith_edu_pucrs_br/ETwYOYhyxSpIrNdoyTEEQO4B02L017F-ktmkg7oJ1BlTEg?e=h3KrCd&download=1" -O data_train.npz
-wget "https://brpucrs-my.sharepoint.com/:u:/g/personal/rodrigo_fleith_edu_pucrs_br/Eb2eZcTvCPJLprEeYrqXoOcBi8s2BkOm_QXj2lxJySs5Uw?e=iHhYqT&download=1" -O data_test.npz
-wget "https://brpucrs-my.sharepoint.com/:u:/g/personal/rodrigo_fleith_edu_pucrs_br/ERPhfoNFYHNCicV5YYSIeXYBYybMavYAqfQ7NCl_v1j53A?e=jZMfE3&download=1" -O labels_test.npz
-wget "https://brpucrs-my.sharepoint.com/:u:/g/personal/rodrigo_fleith_edu_pucrs_br/ERulN2BIYqFPo-uqaPeauBkBq11mt5hx0eweQfGu7TORRw?e=GLsh1Q&download=1" -O labels_train.npz
 
 print('lendo arq npz')
-data_test = np.load("data_test.npz",mmap_mode = 'r')
-data_train = np.load("data_train.npz",mmap_mode = 'r')
-labels_train = np.load("labels_train.npz",mmap_mode = 'r')
-labels_test = np.load("labels_test.npz",mmap_mode = 'r')
+data_test = np.load("/home/rodrigo.fleith/Dataset/data_test.npz",mmap_mode = 'r')
+data_train = np.load("/home/rodrigo.fleith/Dataset/data_train.npz",mmap_mode = 'r')
+labels_train = np.load("/home/rodrigo.fleith/Dataset/labels_train.npz",mmap_mode = 'r')
+labels_test = np.load("/home/rodrigo.fleith/Dataset/labels_test.npz",mmap_mode = 'r')
 
 print('criando variaveis')
 data_test = [data_test[k] for k in data_test]
