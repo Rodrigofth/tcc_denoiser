@@ -17,7 +17,7 @@ import pandas as pd
 import librosa.display
 import IPython.display
 import matplotlib.pyplot as plt
-import plotly.graph_objects as goimport numpy as np
+import plotly.graph_objects as go
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 import sklearn.metrics
