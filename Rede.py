@@ -73,25 +73,28 @@ data_test = np.load("/home/rodrigo.fleith/Dataset/data_test.npz",mmap_mode = 'r'
 data_train = np.load("/home/rodrigo.fleith/Dataset/data_train.npz",mmap_mode = 'r')
 labels_train = np.load("/home/rodrigo.fleith/Dataset/labels_train.npz",mmap_mode = 'r')
 labels_test = np.load("/home/rodrigo.fleith/Dataset/labels_test.npz",mmap_mode = 'r')
-
+print('Fim')
 print('criando variaveis')
 data_test = [data_test[k] for k in data_test]
 data_train = [data_train[k] for k in data_train]
 labels_train = [labels_train[k] for k in labels_train]
 labels_test = [labels_test[k] for k in labels_test]
-
+print('Fim')
 print("explidindo")
 data_train_1d, train_index = master_exploder(data_train)
 data_test_1d, test_index = master_exploder(data_test)
 labels_train_1d, labels_train_index = master_exploder(labels_train)
 labels_test_1d, labels_test_index = master_exploder(labels_test)
-
+print('Fim')
 print("pegando modulo")
 data_train_2d = m_2d(data_train_1d)
+print('Fim1')
 data_test_2d = m_2d(data_test_1d)
+print('Fim2')
 labels_train_2d = m_2d(labels_train_1d)
+print('Fim3')
 labels_test_2d = m_2d(labels_test_1d)
-
+print('Fim')
 data_train_2dT = np.array(data_train_2d).reshape(len(data_train_2d),1,129)
 data_test_2dT = np.array(data_test_2d).reshape(len(data_test_2d),1,129)
 labels_train_2dT = np.array(labels_train_2d).reshape(len(labels_train_2d),1,129)
