@@ -101,7 +101,7 @@ labels_train_2dT = np.array(labels_train_2d).reshape(len(labels_train_2d),1,129)
 labels_test_2dT = np.array(labels_test_2d).reshape(len(labels_test_2d),1,129)
 
 def seq2one(vocab, input_shape):
-    lr_schedule = schedules.ExponentialDecay(initial_learning_rate=1e-3, decay_steps=50000, decay_rate=0.95, staircase=True)
+    lr_schedule = schedules.ExponentialDecay(initial_learning_rate=1e-3, decay_steps=320e3, decay_rate=0.95, staircase=True)
 
     opt = Adam(learning_rate=0.0001)
     opt2 = RMSprop(learning_rate = lr_schedule,momentum=0.6)
