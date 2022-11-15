@@ -132,4 +132,4 @@ def train_model(train_inputs, test_inputs, train_labels, test_labels):
 
 model = train_model(data_train_2dT,data_test_2dT,labels_train_2d,labels_test_2d)
 
-model.save('saved_model/Lstm_100epochs')
+model.save('Lstm_100epochs')
