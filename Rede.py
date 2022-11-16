@@ -88,12 +88,24 @@ labels_test_1d, labels_test_index = master_exploder(labels_test)
 print('Fim')
 print("pegando modulo")
 data_train_2d = m_2d(data_train_1d)
+print('salvando data_train_2d_modulo....')
+np.savez('data_train_2d_abs.npz', *data_train_2d)
+print("FIM savez")
 print('Fim1')
 data_test_2d = m_2d(data_test_1d)
+print('salvando data_test_2d_modulo....')
+np.savez('data_test_2d_abs.npz', *data_test_2d)
+print("FIM savez")
 print('Fim2')
 labels_train_2d = m_2d(labels_train_1d)
+print('salvando labels_train_2d_modulo....')
+np.savez('labels_train_2d_abs.npz', *labels_train_2d)
+print("FIM savez")
 print('Fim3')
 labels_test_2d = m_2d(labels_test_1d)
+print('salvando labels_test_2d_modulo....')
+np.savez('labels_test_2d_abs.npz', *labels_test_2d)
+print("FIM savez")
 print('Fim')
 data_train_2dT = np.array(data_train_2d).reshape(len(data_train_2d),1,129)
 data_test_2dT = np.array(data_test_2d).reshape(len(data_test_2d),1,129)
@@ -101,7 +113,7 @@ labels_train_2dT = np.array(labels_train_2d).reshape(len(labels_train_2d),1,129)
 labels_test_2dT = np.array(labels_test_2d).reshape(len(labels_test_2d),1,129)
 
 def seq2one(vocab, input_shape):
-    lr_schedule = schedules.ExponentialDecay(initial_learning_rate=1e-3, decay_steps=320e3, decay_rate=0.95, staircase=True)
+    lr_schedule = schedules.ExponentialDecay(initial_learning_rate=1e-3, decay_steps=300e3, decay_rate=0.80, staircase=True)
 
     opt = Adam(learning_rate=0.0001)
     opt2 = RMSprop(learning_rate = lr_schedule,momentum=0.6)
@@ -109,7 +121,7 @@ def seq2one(vocab, input_shape):
     model = Sequential()
 
     model.add((LSTM(256,input_shape=input_shape)))
-    model.add(Dense(512,activation='relu'))
+    #model.add(Dense(512,activation='relu'))
     model.add(Dense(256,activation='relu'))
     model.add(Dense(vocab))
     model.add(Activation('sigmoid'))
@@ -120,7 +132,7 @@ def seq2one(vocab, input_shape):
     
 def train_model(train_inputs, test_inputs, train_labels, test_labels):
   
-  epochs = 100
+  epochs = 10
   batch_size = 64
 
   vocab = 129
@@ -132,4 +144,4 @@ def train_model(train_inputs, test_inputs, train_labels, test_labels):
 
 model = train_model(data_train_2dT,data_test_2dT,labels_train_2d,labels_test_2d)
 
-model.save('Lstm_100epochs')
+model.save('Lstm_10epochs_abs')
