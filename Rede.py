@@ -183,7 +183,7 @@ labels_train_2dT = np.array(labels_train_2d).reshape(len(labels_train_2d),1,129)
 print('3')
 labels_test_2dT = np.array(labels_test_2d).reshape(len(labels_test_2d),1,129)
 print('4')
- print('Incio treino')             
+print('Incio treino')             
 model, results = train_model(data_train_2dT,data_test_2dT,labels_train_2d,labels_test_2d)
 csv_logger = CSVLogger("model_history_LAD1.csv", append=True)  
               
