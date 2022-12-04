@@ -174,12 +174,16 @@ data_test = [data_test[k] for k in data_test]
 data_train = [data_train[k] for k in data_train]
 labels_train = [labels_train[k] for k in labels_train]
 labels_test = [labels_test[k] for k in labels_test]
-
+print('Inicio reshape')
 data_train_2dT = np.array(data_train_2d).reshape(len(data_train_2d),1,129)
+print('1')
 data_test_2dT = np.array(data_test_2d).reshape(len(data_test_2d),1,129)
+print('2')
 labels_train_2dT = np.array(labels_train_2d).reshape(len(labels_train_2d),1,129)
+print('3')
 labels_test_2dT = np.array(labels_test_2d).reshape(len(labels_test_2d),1,129)
-              
+print('4')
+ print('Incio treino')             
 model, results = train_model(data_train_2dT,data_test_2dT,labels_train_2d,labels_test_2d)
 csv_logger = CSVLogger("model_history_LAD1.csv", append=True)  
               
