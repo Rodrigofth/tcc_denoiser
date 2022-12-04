@@ -172,8 +172,11 @@ print('Fim')
 print('criando variaveis')
 
 data_test = [data_test[k] for k in data_test]
+print('1')
 data_train = [data_train[k] for k in data_train]
+print('2')
 labels_train = [labels_train[k] for k in labels_train]
+print('3')
 labels_test = [labels_test[k] for k in labels_test]
 print('Inicio 1d')
 data_train_1d, train_index = master_exploder(data_train)
