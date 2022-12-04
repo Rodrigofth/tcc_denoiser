@@ -48,7 +48,7 @@ def seq2one(vocab, input_shape):
 
     model = Sequential()
 
-    model.add(Bidirectional(LSTM(1024,input_shape=input_shape,))
+    model.add(LSTM(1024,input_shape=input_shape))
     model.add(Dense(512,activation="relu"))
    #model.add(tf.keras.layers.Dropout(.7,input_shape=input_shape))
     model.add(Dense(256,activation="relu"))
