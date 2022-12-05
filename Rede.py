@@ -97,6 +97,7 @@ class TestCallback(tf.keras.callbacks.Callback):
              'Test precision': score[1],
              'Test recall': score[2],
               'Test f1': score[3]}
+        
 def recall_m(y_true, y_pred):
     true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
     possible_positives = K.sum(K.round(K.clip(y_true, 0, 1)))
@@ -199,9 +200,10 @@ print('reshape')
 data_train_2dT = np.array(data_train_2d).reshape(len(data_train_2d),1,129)
 print('1')
 data_test_2dT = np.array(data_test_2d).reshape(len(data_test_2d),1,129)
-print('Incio treino')             
-model, results = train_model(data_train_2dT,data_test_2dT,labels_train_2d,labels_test_2d)
+print('Incio treino')
 csv_logger = CSVLogger("model_history_LAD1.csv", append=True)  
+model, results = train_model(data_train_2dT,data_test_2dT,labels_train_2d,labels_test_2d)
+
               
 fl = 'model_history_LAD1.csv'
 
